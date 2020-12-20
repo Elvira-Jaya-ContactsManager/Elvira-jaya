@@ -13,8 +13,7 @@ public class Input {
 
     //Method for user input
     public String getName(){
-        System.out.println("enter a string");
-        return this.scanner.nextLine();
+        return this.scanner.next();
     }
 
     //Method with String parameter that will act as a prompt
@@ -25,7 +24,7 @@ public class Input {
 
     //prompt for yes/no response from user
     public boolean yesNo(){
-        return yesNo("Please enter yes or no.");
+        return yesNo("Please enter yes or no[y/n]:");
     }
 
     // yesNo a method that includes a string as a parameter
@@ -38,7 +37,7 @@ public class Input {
 
     //get phone number from user
     public long getPhoneNumber(){
-        System.out.println("Please enter an int.");
+        System.out.println("Please enter a 10 digit phone number:");
         return this.scanner.nextLong();
     }
 

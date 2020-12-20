@@ -6,18 +6,36 @@ public class Contacts {
     private String lastName;
     private Long phoneNumber;
 
-
     //Contacts Constructor
     public Contacts(String firstName, String lastName, Long phoneNumber) {
-
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
     }
 
+    //Getters and Setters
+    public String getFirstName() {
+        return firstName;
+    }
 
-    //Custom Methods
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-    //loadContacts method used to display contacts
-    public void loadContacts(){
+    public String getLastName() {
+        return lastName;
+    }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Long phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
 
