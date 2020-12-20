@@ -2,11 +2,14 @@ package contactsManager;
 
 import util.Input;
 
+import java.io.File;
+
 public class ContactsManagerApplication {
 
     //Main Method
     public static void main(String[] args) {
         Input input = new Input(); //Creating a new instance of Scanner, that makes new user input available
+
 
         long phoneNumber = input.getPhoneNumber(); //storing the radius from the user input
 
@@ -16,5 +19,9 @@ public class ContactsManagerApplication {
         System.out.println(firstName);
         System.out.println(lastName);
         System.out.println(phoneNumber);
+
+
+
+
     }
 }

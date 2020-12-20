@@ -22,6 +22,21 @@ public class Input {
         return getName();
     }
 
+    //Method to validate user Input within range with a prompt
+    public int getInt(int min, int max) {
+        return getInt(min, max, "Please enter an int between " + min + " and " + max);
+    }
+
+    //Method to validate user Input within range
+    public int getInt(int min, int max,String prompt){
+        int input;
+        do{
+            System.out.println(prompt);
+            input = this.scanner.nextInt();
+        }while(input < min || input > max);
+
+        return input;
+    }
     //prompt for yes/no response from user
     public boolean yesNo(){
         return yesNo("Please enter yes or no[y/n]:");
