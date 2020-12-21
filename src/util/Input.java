@@ -33,7 +33,14 @@ public class Input {
         do{
             System.out.println(prompt);
             input = this.scanner.nextInt();
-        }while(input < min || input > max);
+
+            //Checking to see if user input is valid
+            if(input > max || input < min) {
+                System.out.println("Invalid entry , please enter a valid category:");
+                int userChoice = input.getInt();
+            }
+
+        } while(input < min || input > max);
 
         return input;
     }
