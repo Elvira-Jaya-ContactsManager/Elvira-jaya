@@ -2,23 +2,25 @@ package contactsManager;
 
 import util.Input;
 
-public class ContactCRUD {
+import java.util.Scanner;
+
+public class ContactCRUD extends Input {
+    Input userInput = new Input();
+
 
     //Constructors
     public ContactCRUD() {
-
     }
 
     //Custom Methods
 
     //Method for loading contacts onto the user interface
     public void loadContacts() {
-
+        //will need  to load contacts from file(1.create contacts.txt, able to load ot from the file
     }
 
     //Method for displaying the main menu with options for the user to choose from
     public int displayMainMenu() {
-        Input userInput = new Input();
 
         System.out.println("Welcome to Contacts Manager");
         System.out.println("1. View contacts.");
@@ -42,9 +44,19 @@ public class ContactCRUD {
     }
 
     //Method for adding a contact
-    public void addContact() {
 
-    }
+//    public void addContact() {
+//        Input userInput = new Input();
+//        int userChoice = displayMainMenu();
+//
+//        if(userChoice == 2){
+//            userInput.getName("Enter a name:");
+//             working on User Input to get the next Int
+//            userInput.getPhoneNumber();
+//
+//
+//        }
+//    }
 
     //Method for deleting a contact
     public void deleteContact() {
