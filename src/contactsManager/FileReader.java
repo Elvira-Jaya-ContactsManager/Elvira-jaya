@@ -79,19 +79,19 @@ public class FileReader {
 
     }
 
-    // PSVM (you can think of this as being 20 files away from this file - it is STATIC
-    public static void main(String[] args) throws IOException {
-//        // Instantiate a FileReader object, and see if it works
-//        FileReader day18Reader = new FileReader("data", "day18.txt", "day18.log");
-//        day18Reader.writeToLog("Successfully read the " + day18Reader.getFileName() + " file!");
-
-        // Set up a new instance to access the jolts.txt file
-        FileReader contactsReader = new FileReader("src/contactsManager", "contacts.txt", "contacts.log");
-        contactsReader.writeToLog("Successfully read the " + contactsReader.getFileName() + " file!");
-
-        System.out.println("Contacts file, here's the first line:");
-//        System.out.println(contactsReader.getFileLines().get(0));
-    }
+//    // PSVM (you can think of this as being 20 files away from this file - it is STATIC
+//    public static void main(String[] args) throws IOException {
+////        // Instantiate a FileReader object, and see if it works
+////        FileReader day18Reader = new FileReader("data", "day18.txt", "day18.log");
+////        day18Reader.writeToLog("Successfully read the " + day18Reader.getFileName() + " file!");
+//
+//        // Set up a new instance to access the jolts.txt file
+//        FileReader contactsReader = new FileReader("src/contactsManager", "contacts.txt", "contacts.log");
+//        contactsReader.writeToLog("Successfully read the " + contactsReader.getFileName() + " file!");
+//
+//        System.out.println("Contacts file, here's the first line:");
+////        System.out.println(contactsReader.getFileLines().get(0));
+//    }
 
 
     // Custom Method - want to be able to easily write a message to the log, without some enormous nested function calling nonsense
