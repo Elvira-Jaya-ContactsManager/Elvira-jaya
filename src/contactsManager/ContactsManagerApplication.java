@@ -7,7 +7,7 @@ import java.io.File;
 public class ContactsManagerApplication {
 
     //Main Method
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Input input = new Input(); //Creating a new instance of Scanner, that makes new user input available
 
 
@@ -20,12 +20,14 @@ public class ContactsManagerApplication {
 //        System.out.println(lastName);
 //        System.out.println(phoneNumber);
 
-        ContactCRUD crudExample = new ContactCRUD();
+//        ContactCRUD crudExample = new ContactCRUD();
+//
+//        crudExample.displayMainMenu();
 
-        crudExample.displayMainMenu();
-
-
-
+        // Set up a new instance to access the jolts.txt file
+        FileReader contactsReader = new FileReader("src/contactsManager", "contacts.txt", "contacts.log");
+        contactsReader.writeToLog("Successfully read the " + contactsReader.getFileName() + " file!"); // => src/contactsManager/contacts.txt
+//        System.out.println("Contacts file, here's the first line:");
 
 
     }

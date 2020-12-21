@@ -2,6 +2,7 @@ package contactsManager;
 
 import util.Input;
 
+import java.io.File;
 import java.util.Scanner;
 
 public class ContactCRUD extends Input {
@@ -14,10 +15,6 @@ public class ContactCRUD extends Input {
 
     //Custom Methods
 
-    //Method for loading contacts onto the user interface
-    public void loadContacts() {
-        //will need  to load contacts from file(1.create contacts.txt, able to load ot from the file
-    }
 
     //Method for displaying the main menu with options for the user to choose from
     public int displayMainMenu() {
@@ -32,6 +29,12 @@ public class ContactCRUD extends Input {
         int userChoice = userInput.getInt(1,5,"Enter an option (1, 2, 3, 4 or 5):");
         return userChoice;
     }
+
+//    //Method for loading contacts onto the user interface
+//    public void loadContacts() {
+//        //will need to load contacts from file(1.create contacts.txt, able to load ot from the file)
+//        File contactList = new File();
+//    }
 
     //Method for searching a contact by name
     public void searchContactByName() {
