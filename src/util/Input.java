@@ -24,11 +24,12 @@ public class Input {
 
     //Method to validate user Input within range with a prompt
     public int getInt(int min, int max) {
-        return getInt(min, max, "Please enter an int between " + min + " and " + max);
+       return getInt(min, max, "Please enter an int between " + min + " and " + max);
+
     }
 
     //Method to validate user Input within range
-    public int getInt(int min, int max,String prompt){
+    public int getInt(int min, int max,String prompt ){
         int input;
         do{
             System.out.println(prompt);
@@ -36,8 +37,8 @@ public class Input {
 
             //Checking to see if user input is valid
             if(input > max || input < min) {
-                System.out.println("Invalid entry , please enter a valid category:");
-                int userChoice = input.getInt();
+                System.out.println("INVALID ENTRY! Please enter a number between " + min + " and " + max +": ");
+                int userChoice = scanner.nextInt();
             }
 
         } while(input < min || input > max);
