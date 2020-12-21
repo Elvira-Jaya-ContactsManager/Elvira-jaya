@@ -21,13 +21,13 @@ public class ContactCRUD {
         Input userInput = new Input();
 
         System.out.println("Welcome to Contacts Manager");
-        System.out.println("1. View contacts");
+        System.out.println("1. View contacts.");
         System.out.println("2. Add a new contact.");
         System.out.println("3. Search a contact by name.");
         System.out.println("4. Delete an existing contact.");
         System.out.println("5. Exit.");
 
-        int userChoice = userInput.getInt(1,5,"Enter an option (1, 2, 3, 4 or 5:");
+        int userChoice = userInput.getInt(1,5,"Enter an option (1, 2, 3, 4 or 5):");
         return userChoice;
     }
 
