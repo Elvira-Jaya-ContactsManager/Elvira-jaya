@@ -3,14 +3,18 @@ package contactsManager;
 import util.Input;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ContactCRUD extends Input {
     Input userInput = new Input();
-
+    FileReader contactsReader = new FileReader("src/contactsManager", "contacts.txt", "contacts.log");
+//    List<String> lines = Files.readAllLines('')
 
     //Constructors
-    public ContactCRUD() {
+    public ContactCRUD() throws IOException {
     }
 
     //Custom Methods
@@ -26,15 +30,22 @@ public class ContactCRUD extends Input {
         System.out.println("4. Delete an existing contact.");
         System.out.println("5. Exit.");
 
-        int userChoice = userInput.getInt(1,5,"Enter an option (1, 2, 3, 4 or 5):");
+        int userChoice = userInput.getInt(1, 5, "Enter an option (1, 2, 3, 4 or 5):");
         return userChoice;
     }
 
-//    //Method for loading contacts onto the user interface
-//    public void loadContacts() {
-//        //will need to load contacts from file(1.create contacts.txt, able to load ot from the file)
-//        File contactList = new File();
-//    }
+    //Method for loading contacts onto the user interface
+    public void loadContacts() throws IOException {
+        //will need to load contacts from file(1.create contacts.txt, able to load ot from the file)
+        // Set up a new instance to access the jolts.txt file
+
+        contactsReader.writeToLog("Successfully read the " + contactsReader.getFileName() + " file!"); // => src/contactsManager/contacts.txt
+        System.out.printf(" Name  |  Phone number  \n -------------------\n");
+        for(int i = 0;i<contactsReader.getFileLines().size();i++) {
+            System.out.println(contactsReader.getFileLines().get(i));
+        }
+
+    }
 
     //Method for searching a contact by name
     public void searchContactByName() {
