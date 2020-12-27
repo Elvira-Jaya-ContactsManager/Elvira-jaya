@@ -8,8 +8,8 @@ public class ContactsManagerApplication {
     public static void main(String[] args) throws Exception {
         Input input = new Input();
         ContactCRUD contactsManager = new ContactCRUD();
-        input.getName("hey enter your name");
 //        contactsManager.displayMainMenu();
+        contactsManager.addContact();
 
     }
 }

@@ -18,13 +18,9 @@ public class Input {
 
     //Method with String parameter that will act as a prompt
     public String getName(String prompt){
-//        System.out.println(prompt);
-//        String userChoice = scanner.next();
-//        if(userChoice.isEmpty()|| Character.isDigit(Integer.parseInt(userChoice))){
-//            System.out.println("INVALID ENTRY! Please enter valid name in characters");
-//        }
-//        System.out.println(prompt);
-//        return userChoice;
+        System.out.println(prompt);
+        String userChoice = scanner.next();
+        return userChoice;
     }
 
     //Method to validate user Input within range with a prompt

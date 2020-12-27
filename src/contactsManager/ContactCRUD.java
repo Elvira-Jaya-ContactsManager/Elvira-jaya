@@ -63,20 +63,30 @@ public class ContactCRUD extends Input {
 
 
 //    //Method for adding a contact
-    public void addContact() {
-        int userChoice = displayMainMenu();
-
-        try {
-            if(userChoice == 2){
-                this.userInput.getName("Enter a name:");
-                this.userInput.getPhoneNumber();
-            }
-        }
-        catch(Exception e) {
-            System.out.println("Please enter ");
-        }
-
-    }
+//    public void addContact() throws Exception {
+//        int userChoice = displayMainMenu();
+//
+//        try {
+//            if(userChoice == 2){
+//                this.userInput.getName("Enter a name:");
+//                this.userInput.getPhoneNumber();
+//            }
+//        }
+//        catch(Exception e) {
+////            System.out.println("Please enter a valid input");
+//            this.userInput.getPhoneNumber();
+//            throw new Exception("Invalid entry. Please enter a valid input");
+//
+////            this.userInput.getPhoneNumber();
+//        }
+//        //catch is not working properly. Is printing the message,
+//        // but we are trying to prompt the user to input the correct
+//        // phoneNumber again using the getPhoneNumber(), but when we
+//        // put 'this.userInput.getPhoneNumber()' into the catch,
+//        //the console displays "Please enter a valid input" and "Please
+//        // enter a 10 digit phone number" then shows the red error
+//        // message
+//    }
 
     //Method for deleting a contact
     public void deleteContact() {
