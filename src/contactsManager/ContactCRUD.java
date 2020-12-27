@@ -63,21 +63,20 @@ public class ContactCRUD extends Input {
 
 
 //    //Method for adding a contact
-//    public void addContact() {
-//        Input userInput = new Input();
-//        int userChoice = displayMainMenu();
-//
-//        try {
-//            if(userChoice == 2){
-//                userInput.getName("Enter a name:");
-////                userInput.getPhoneNumber();
-//            }
-//        }
-//        catch(S) {
-//
-//        }
-//
-//    }
+    public void addContact() {
+        int userChoice = displayMainMenu();
+
+        try {
+            if(userChoice == 2){
+                this.userInput.getName("Enter a name:");
+                this.userInput.getPhoneNumber();
+            }
+        }
+        catch(Exception e) {
+            System.out.println("Please enter ");
+        }
+
+    }
 
     //Method for deleting a contact
     public void deleteContact() {
