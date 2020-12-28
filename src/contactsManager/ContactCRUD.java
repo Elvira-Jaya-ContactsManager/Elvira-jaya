@@ -76,7 +76,7 @@ public class ContactCRUD extends Input {
             Contact addAContact = new Contact(firstName, lastName, userPhoneNumber);
             Files.write(
                     Paths.get("src/contactsManager", "contacts.txt"),
-                    Arrays.asList(firstName, lastName, userPhoneNumber),// list with one item
+                    Arrays.asList(addAContact.combineProperties()),
                     StandardOpenOption.APPEND
             );
 
