@@ -5,6 +5,8 @@ import util.Input;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -50,7 +52,7 @@ public class ContactCRUD extends Input {
     public void loadContacts() throws IOException {
         contactsReader.writeToLog("Successfully read the " + contactsReader.getFileName() + " file!");
         System.out.printf("%-15s | %s  \n -----------------------------\n", "Name", "Phone Number");
-        for(int i = 0; i < contactsReader.getFileLines().size(); i++) {
+        for (int i = 0; i < contactsReader.getFileLines().size(); i++) {
             System.out.println(contactsReader.getFileLines().get(i));
         }
 
@@ -62,23 +64,24 @@ public class ContactCRUD extends Input {
     }
 
 
-//    //Method for adding a contact
-//    public void addContact() throws Exception {
-//        int userChoice = displayMainMenu();
-//
-//        try {
-//            if(userChoice == 2){
-//                this.userInput.getName("Enter a name:");
-//                this.userInput.getPhoneNumber();
-//            }
-//        }
-//        catch(Exception e) {
-////            System.out.println("Please enter a valid input");
-//            this.userInput.getPhoneNumber();
-//            throw new Exception("Invalid entry. Please enter a valid input");
-//
-////            this.userInput.getPhoneNumber();
-//        }
+    //    //Method for adding a contact
+    public void addContact() throws Exception {
+
+        int userChoice = displayMainMenu();
+
+        if (userChoice == 2) {
+            String firstName = this.userInput.getName("Enter a first name");
+            String lastName = this.userInput.getName("Enter a last name");
+            String userPhoneNumber = this.userInput.getPhoneNumber();
+            Contact addAContact = new Contact(firstName, lastName, userPhoneNumber);
+            Files.write(
+                    Paths.get("src/contactsManager", "contacts.txt"),
+                    Arrays.asList(firstName, lastName, userPhoneNumber),// list with one item
+                    StandardOpenOption.APPEND
+            );
+
+
+        }
 //        //catch is not working properly. Is printing the message,
 //        // but we are trying to prompt the user to input the correct
 //        // phoneNumber again using the getPhoneNumber(), but when we
@@ -88,8 +91,9 @@ public class ContactCRUD extends Input {
 //        // message
 //    }
 
-    //Method for deleting a contact
-    public void deleteContact() {
-
+        //Method for deleting a contact
+//    public void deleteContact() {
+//
+//    }
     }
 }

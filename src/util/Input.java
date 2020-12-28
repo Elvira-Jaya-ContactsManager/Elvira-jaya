@@ -43,7 +43,6 @@ public class Input {
             }
 
         } while(input < min || input > max);
-
         return input;
     }
     //prompt for yes/no response from user
@@ -60,9 +59,9 @@ public class Input {
     }
 
     //get phone number from user
-    public long getPhoneNumber(){
+    public String getPhoneNumber(){
         System.out.println("Please enter a 10 digit phone number:");
-        return this.scanner.nextLong();
+        return this.scanner.next();
     }
 
 }

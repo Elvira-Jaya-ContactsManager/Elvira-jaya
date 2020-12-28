@@ -1,16 +1,21 @@
 package contactsManager;
 
-public class Contacts {
+public class Contact {
     //properties
     private String firstName;
     private String lastName;
-    private Long phoneNumber;
+    private String phoneNumber;
 
     //Contacts Constructor
-    public Contacts(String firstName, String lastName, Long phoneNumber) {
+    public Contact(String firstName, String lastName, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
+    }
+    //Method for combining 3 properties for display & format information
+
+    public String combineProperties(){
+        return String.format("%s %-15s  ||%s ",this.firstName, this.lastName,this.phoneNumber);
     }
 
     //Getters and Setters
@@ -30,13 +35,14 @@ public class Contacts {
         this.lastName = lastName;
     }
 
-    public Long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
 
 
 }
