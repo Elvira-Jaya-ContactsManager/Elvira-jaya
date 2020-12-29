@@ -8,7 +8,8 @@ public class ContactsManagerApplication {
     public static void main(String[] args) throws Exception {
         Input input = new Input();
         ContactCRUD contactsManager = new ContactCRUD();
-        contactsManager.displayMainMenu();
+//        contactsManager.displayMainMenu();
+        contactsManager.updateContactList();
     }
 }
 

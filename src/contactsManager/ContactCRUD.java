@@ -18,8 +18,12 @@ public class ContactCRUD extends Input {
     public ContactCRUD() throws IOException {
     }
 
-    //Custom Methods
-
+//    //Get userNumberChoice
+//    //Method to validate user Input within range with a prompt
+//    public int updateContact() {
+//        System.out.println("Enter ");
+//        updateContactList();
+//    }
 
     //Method for displaying the main menu with options for the user to choose from
     public int displayMainMenu() {
@@ -31,22 +35,25 @@ public class ContactCRUD extends Input {
         System.out.println("4. Delete an existing contact.");
         System.out.println("5. Exit.");
 
-        int userChoice = userInput.getInt(1, 5, "Enter an option (1, 2, 3, 4 or 5):");
-        return userChoice;
+        int userNumberChoice = userInput.getInt(1, 5, "Enter an option (1, 2, 3, 4 or 5):");
+        return userNumberChoice;
     }
 
-//    //Method for updating contact list based on user's choice from the displayMainMenu
-//    public void updateContactList(int userChoice) throws IOException {
-//        switch(userChoice) {
-//            case 1:
-//                loadContacts();
-//                displayMainMenu();
-//                break;
-//            case 2:
-////                addContact();
-//        }
-//
-//    }
+    //Method for updating contact list based on user's choice from the displayMainMenu
+    public void updateContactList(int userNumberChoice) throws Exception {
+        switch(userNumberChoice) {
+            case 1:
+                loadContacts();
+                displayMainMenu();
+                break;
+            case 2:
+                addContact();
+                break;
+            case 3:
+
+        }
+
+    }
 
     //Method for loading contacts onto the user interface
     public void loadContacts() throws IOException {
@@ -64,34 +71,21 @@ public class ContactCRUD extends Input {
     }
 
 
-    //    //Method for adding a contact
+    //Method for adding a contact
     public void addContact() throws Exception {
-
-        int userChoice = displayMainMenu();
-
-        if (userChoice == 2) {
-            String firstName = this.userInput.getName("Enter a first name");
-            String lastName = this.userInput.getName("Enter a last name");
-            String userPhoneNumber = this.userInput.getPhoneNumber();
-            Contact addAContact = new Contact(firstName, lastName, userPhoneNumber);
-            Files.write(
-                    Paths.get("src/contactsManager", "contacts.txt"),
-                    Arrays.asList(addAContact.combineProperties()),
-                    StandardOpenOption.APPEND
-            );
+        String firstName = this.userInput.getName("Enter a first name");
+        String lastName = this.userInput.getName("Enter a last name");
+        String userPhoneNumber = this.userInput.getPhoneNumber();
+        Contact addAContact = new Contact(firstName, lastName, userPhoneNumber);
+        Files.write(
+                Paths.get("src/contactsManager", "contacts.txt"),
+                Arrays.asList(addAContact.combineProperties()),
+                StandardOpenOption.APPEND
+        );
+    }
 
 
-        }
-//        //catch is not working properly. Is printing the message,
-//        // but we are trying to prompt the user to input the correct
-//        // phoneNumber again using the getPhoneNumber(), but when we
-//        // put 'this.userInput.getPhoneNumber()' into the catch,
-//        //the console displays "Please enter a valid input" and "Please
-//        // enter a 10 digit phone number" then shows the red error
-//        // message
-//    }
-
-        //Method for deleting a contact
+    //Method for deleting a contact
 //    public void deleteContact() {
 //
 //    }
