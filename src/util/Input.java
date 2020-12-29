@@ -38,8 +38,7 @@ public class Input {
 
             //Checking to see if user input is valid
             if(input > max || input < min) {
-                System.out.println("INVALID ENTRY! Please enter a number between " + min + " and " + max +": ");
-                int userChoice = scanner.nextInt();
+                System.out.println("INVALID ENTRY!");
             }
 
         } while(input < min || input > max);

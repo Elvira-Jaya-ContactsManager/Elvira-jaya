@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class ContactCRUD extends Input {
@@ -20,10 +22,7 @@ public class ContactCRUD extends Input {
 
 //    //Get userNumberChoice
 //    //Method to validate user Input within range with a prompt
-//    public int updateContact() {
-//        System.out.println("Enter ");
-//        updateContactList();
-//    }
+
 
     //Method for displaying the main menu with options for the user to choose from
     public int displayMainMenu() {
@@ -40,8 +39,9 @@ public class ContactCRUD extends Input {
     }
 
     //Method for updating contact list based on user's choice from the displayMainMenu
-    public void updateContactList(int userNumberChoice) throws Exception {
-        switch(userNumberChoice) {
+    public void updateContactList() throws Exception {
+        int selectedUserNumber = displayMainMenu();
+        switch (selectedUserNumber) {
             case 1:
                 loadContacts();
                 displayMainMenu();
@@ -50,7 +50,10 @@ public class ContactCRUD extends Input {
                 addContact();
                 break;
             case 3:
-
+                deleteContact();
+                break;
+            default:
+                System.out.println("its working!!");
         }
 
     }
@@ -86,8 +89,21 @@ public class ContactCRUD extends Input {
 
 
     //Method for deleting a contact
-//    public void deleteContact() {
-//
-//    }
+    public void deleteContact() throws IOException {
+
+        List<String> lines = Files.readAllLines(Paths.get("src/contactsManager", "contacts.txt"));
+        List<String> newList = new ArrayList<>();
+        String lastName = this.userInput.getName("Enter a last name");
+
+        for (String line : lines) {
+            if (line.contains(lastName)) {
+                newList.remove(lastName);
+                continue;
+            }
+            newList.add(line);
+        }
+
+        Files.write(Paths.get("src/contactsManager", "contacts.txt"), newList);
     }
+
 }
