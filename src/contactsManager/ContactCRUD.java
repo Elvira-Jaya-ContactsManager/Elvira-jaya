@@ -5,6 +5,7 @@ import util.Input;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
@@ -19,10 +20,6 @@ public class ContactCRUD extends Input {
     //Constructors
     public ContactCRUD() throws IOException {
     }
-
-//    //Get userNumberChoice
-//    //Method to validate user Input within range with a prompt
-
 
     //Method for displaying the main menu with options for the user to choose from
     public int displayMainMenu() {
@@ -40,21 +37,29 @@ public class ContactCRUD extends Input {
 
     //Method for updating contact list based on user's choice from the displayMainMenu
     public void updateContactList() throws Exception {
+
         int selectedUserNumber = displayMainMenu();
-        switch (selectedUserNumber) {
-            case 1:
-                loadContacts();
-                displayMainMenu();
-                break;
-            case 2:
-                addContact();
-                break;
-            case 3:
-                deleteContact();
-                break;
-            default:
-                System.out.println("its working!!");
-        }
+
+            switch (selectedUserNumber) {
+                case 1:
+                    loadContacts();
+                    displayMainMenu();
+                    break;
+                case 2:
+                    addContact();
+                    break;
+                case 3:
+                    searchContactByName();
+                    break;
+                case 4:
+                    deleteContact();
+                    break;
+                case 5:
+                    exitApplication();
+                    break;
+                default:
+                    System.out.println("Thank you for using the Contacts Manager Application!");
+            }
 
     }
 
@@ -69,10 +74,17 @@ public class ContactCRUD extends Input {
     }
 
     //Method for searching a contact by name
-    public void searchContactByName() {
+    public void searchContactByName() throws IOException {
+        Path contactsPath = Paths.get("src/contactsManager", "contacts.txt");
+        List<String> contactList = Files.readAllLines(contactsPath);
+        String name = this.userInput.getName("Enter a name");
 
+        for (String contact : contactList) {
+            if (contact.contains(name)) {
+                System.out.println(contact);
+            }
+        }
     }
-
 
     //Method for adding a contact
     public void addContact() throws Exception {
@@ -87,10 +99,8 @@ public class ContactCRUD extends Input {
         );
     }
 
-
     //Method for deleting a contact
     public void deleteContact() throws IOException {
-
         List<String> lines = Files.readAllLines(Paths.get("src/contactsManager", "contacts.txt"));
         List<String> newList = new ArrayList<>();
         String lastName = this.userInput.getName("Enter a last name");
@@ -106,4 +116,14 @@ public class ContactCRUD extends Input {
         Files.write(Paths.get("src/contactsManager", "contacts.txt"), newList);
     }
 
+    //Method for exiting the application
+    public void exitApplication() throws Exception {
+        boolean quitProgram = userInput.yesNo("Are you sure you want to quit?[y/n]");
+
+        if(quitProgram) {
+            System.out.println("Goodbye!");
+        } else {
+            updateContactList();
+        }
+    }
 }
