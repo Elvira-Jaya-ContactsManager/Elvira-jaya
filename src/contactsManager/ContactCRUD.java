@@ -43,7 +43,6 @@ public class ContactCRUD extends Input {
             switch (selectedUserNumber) {
                 case 1:
                     loadContacts();
-                    displayMainMenu();
                     break;
                 case 2:
                     addContact();
@@ -70,7 +69,7 @@ public class ContactCRUD extends Input {
         for (int i = 0; i < contactsReader.getFileLines().size(); i++) {
             System.out.println(contactsReader.getFileLines().get(i));
         }
-
+        displayMainMenu();
     }
 
     //Method for searching a contact by name
