@@ -9,8 +9,6 @@ public class ContactsManagerApplication {
         Input input = new Input();
         ContactCRUD contactsManager = new ContactCRUD();
         contactsManager.displayMainMenu();
-        contactsManager.addContact();
-
     }
 }
 
