@@ -44,15 +44,23 @@ public class Input {
         } while(input < min || input > max);
         return input;
     }
-    //prompt for yes/no response from user
+//    prompt for yes/no response from user
     public boolean yesNo(){
         return yesNo("Please enter yes or no[y/n]:");
     }
 
-    // yesNo a method that includes a string as a parameter
+//     yesNo a method that includes a string as a parameter
     public boolean yesNo(String prompt){
-        System.out.println(prompt);
-        String input = this.scanner.next();
+        String input;
+
+
+           System.out.println(prompt);
+          input = this.scanner.next();
+           if (!input.trim().equalsIgnoreCase("y") || !input.trim().equalsIgnoreCase("yes")
+                   || !input.trim().equalsIgnoreCase("n") || !input.trim().equalsIgnoreCase("no")) {
+               System.out.println("INVALID ENTRY");
+           }
+
         return (input.trim().equalsIgnoreCase("y") ||
                 input.trim().equalsIgnoreCase("yes"));
     }
