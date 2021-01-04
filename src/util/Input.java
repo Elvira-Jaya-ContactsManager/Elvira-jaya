@@ -12,12 +12,12 @@ public class Input {
     }
 
     //Method for user input
-    public String getName(){
+    public String getName() {
         return this.scanner.next();
     }
 
     //Method with String parameter that will act as a prompt
-    public String getName(String prompt){
+    public String getName(String prompt) {
         System.out.println(prompt);
         String userChoice = scanner.next();
         return userChoice;
@@ -25,58 +25,62 @@ public class Input {
 
     //Method to validate user Input within range with a prompt
     public int getInt(int min, int max) {
-       return getInt(min, max, "Please enter an int between " + min + " and " + max);
+        return getInt(min, max, "Please enter an int between " + min + " and " + max);
 
     }
 
     //Method to validate user Input within range
-    public int getInt(int min, int max,String prompt ){
+    public int getInt(int min, int max, String prompt) {
         int input;
-        do{
+        do {
             System.out.println(prompt);
             input = this.scanner.nextInt();
 
             //Checking to see if user input is valid
-            if(input > max || input < min) {
+            if (input > max || input < min) {
                 System.out.println("INVALID ENTRY!");
             }
 
-        } while(input < min || input > max);
+        } while (input < min || input > max);
         return input;
     }
-//    prompt for yes/no response from user
-    public boolean yesNo(){
+
+    //    prompt for yes/no response from user
+    public boolean yesNo() {
         return yesNo("Please enter yes or no[y/n]:");
     }
 
-//  yesNo a method that includes a string as a parameter
+    //  yesNo a method that includes a string as a parameter
     public boolean yesNo(String prompt) {
+        String input;
         System.out.println(prompt);
-        String input = this.scanner.next();
-
-
-
+        input = this.scanner.next();
+        if (input.trim().equalsIgnoreCase("y") || input.trim().equalsIgnoreCase("yes") || input.trim().equalsIgnoreCase("n") || input.trim().equalsIgnoreCase("no")) {
+        }else {
+            yesNo();
+        }
         return (input.trim().toLowerCase().equals("y") ||
                 input.trim().toLowerCase().equals("yes"));
-    }
 
+    }
 
 
 ////     yesNo a method that includes a string as a parameter
 //    public boolean yesNo(String prompt){
 //        String input;
-//
-//        System.out.println(prompt);
-//        input = this.scanner.next();
-//
 //        boolean userContinues = true;
 //        boolean no = false;
 //
 //        do {
-//            if (!input.trim().equalsIgnoreCase("y") | !input.trim().equalsIgnoreCase("yes")
-//                   | !input.trim().equalsIgnoreCase("n") | !input.trim().equalsIgnoreCase("no")) {
-//               System.out.println("INVALID ENTRY!");
-//            }
+////
+////            System.out.println(prompt);
+////            input = this.scanner.next();
+////            if (input.trim().equalsIgnoreCase("y") || input.trim().equalsIgnoreCase("yes")
+////                    || input.trim().equalsIgnoreCase("n") || input.trim().equalsIgnoreCase("no")) {
+////
+////                System.out.println("INVALID ENTRY!");
+////            }else
+////                userContinues=false;
 //        } while (userContinues);
 //
 //
@@ -85,7 +89,7 @@ public class Input {
 //    }
 
     //get phone number from user
-    public String getPhoneNumber(){
+    public String getPhoneNumber() {
         System.out.println("Please enter a 10 digit phone number:");
         return this.scanner.next();
     }
