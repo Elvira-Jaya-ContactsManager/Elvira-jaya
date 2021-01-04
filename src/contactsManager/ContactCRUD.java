@@ -8,10 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class ContactCRUD extends Input {
     Input userInput = new Input();
@@ -79,7 +76,7 @@ public class ContactCRUD extends Input {
         String name = this.userInput.getName("Enter a name");
 
         for (String contact : contactList) {
-            if (contact.contains(name)) {
+            if (contact.trim().toLowerCase().contains(name.trim().toLowerCase())) {
                 System.out.println(contact);
             }
         }
@@ -97,6 +94,16 @@ public class ContactCRUD extends Input {
                 StandardOpenOption.APPEND
         );
 
+        Path contactsPath = Paths.get("src/contactsManager", "contacts.txt");
+
+//        //When using this code snippet below, the contacts listed do not include the last contact added
+//        Files.readAllLines(contactsPath);
+//        loadContacts();
+
+//        //When using this loop, the contacts listed do not include the last contact added
+//        for (int i = 0; i < contactsReader.getFileLines().size(); i++) {
+//            System.out.println(contactsReader.getFileLines().get(i));
+//        }
     }
 
     //Method for deleting a contact
