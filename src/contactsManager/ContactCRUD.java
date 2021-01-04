@@ -19,8 +19,6 @@ public class ContactCRUD extends Input {
 
     //Method for displaying the main menu with options for the user to choose from
     public int displayMainMenu() {
-
-        System.out.println("Welcome to Contacts Manager");
         System.out.println("1. View contacts.");
         System.out.println("2. Add a new contact.");
         System.out.println("3. Search a contact by name.");
@@ -36,12 +34,12 @@ public class ContactCRUD extends Input {
 
         int selectedUserNumber;
 
+        System.out.println("Welcome to Contacts Manager");
         do {
             selectedUserNumber = displayMainMenu();
             switch (selectedUserNumber) {
                 case 1:
                     loadContacts();
-                    displayMainMenu();
                     break;
                 case 2:
                     addContact();
@@ -67,13 +65,13 @@ public class ContactCRUD extends Input {
         FileReader contactsReader = new FileReader("src/contactsManager", "contacts.txt", "contacts.log");
 
         contactsReader.writeToLog("Successfully read the " + contactsReader.getFileName() + " file!");
-        System.out.printf("%-15s | %s  \n -----------------------------\n", "Name", "Phone Number");
+        System.out.printf("%-30s || %s  \n-------------------------------------------------\n", "Name", "Phone Number");
+        System.out.println("-------------------------------------------------");
 
         for (int i = 0; i < contactsReader.getFileLines().size(); i++) {
             System.out.println(contactsReader.getFileLines().get(i));
         }
-        System.out.printf("-------------------------------------------------%n-------------------------------------------------%n");
-        displayMainMenu();
+        System.out.println("-------------------------------------------------\n-------------------------------------------------");
     }
 
 
@@ -87,7 +85,10 @@ public class ContactCRUD extends Input {
 
         for (String contact : contactList) {
             if (contact.trim().toLowerCase().contains(fName.trim().toLowerCase()) && contact.trim().toLowerCase().contains(lName.trim().toLowerCase())) {
+                System.out.println("-------------------------------------------------\n-------------------------------------------------");
                 System.out.println(contact);
+                System.out.println("-------------------------------------------------\n-------------------------------------------------");
+
             }
         }
     }
@@ -105,7 +106,6 @@ public class ContactCRUD extends Input {
                 Arrays.asList(addAContact.combineProperties()),
                 StandardOpenOption.APPEND
         );
-
         loadContacts();
     }
 
