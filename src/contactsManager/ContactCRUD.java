@@ -12,7 +12,7 @@ import java.util.*;
 
 public class ContactCRUD extends Input {
     Input userInput = new Input();
-    FileReader contactsReader = new FileReader("src/contactsManager", "contacts.txt", "contacts.log");
+//    FileReader contactsReader = new FileReader("src/contactsManager", "contacts.txt", "contacts.log");
 
     //Constructors
     public ContactCRUD() throws IOException {
@@ -43,6 +43,7 @@ public class ContactCRUD extends Input {
                     break;
                 case 2:
                     addContact();
+                    displayMainMenu();
                     break;
                 case 3:
                     searchContactByName();
@@ -61,12 +62,15 @@ public class ContactCRUD extends Input {
 
     //Method for loading contacts onto the user interface
     public void loadContacts() throws IOException {
+        FileReader contactsReader = new FileReader("src/contactsManager", "contacts.txt", "contacts.log");
+
         contactsReader.writeToLog("Successfully read the " + contactsReader.getFileName() + " file!");
         System.out.printf("%-15s | %s  \n -----------------------------\n", "Name", "Phone Number");
+        System.out.println( contactsReader.getFileLines().size());
         for (int i = 0; i < contactsReader.getFileLines().size(); i++) {
             System.out.println(contactsReader.getFileLines().get(i));
         }
-        displayMainMenu();
+        System.out.printf("-------------------------------------------------%n-------------------------------------------------%n");
     }
 
     //Method for searching a contact by name
@@ -93,27 +97,22 @@ public class ContactCRUD extends Input {
                 Arrays.asList(addAContact.combineProperties()),
                 StandardOpenOption.APPEND
         );
+        loadContacts();
 
-        Path contactsPath = Paths.get("src/contactsManager", "contacts.txt");
-
-//        //When using this code snippet below, the contacts listed do not include the last contact added
-//        Files.readAllLines(contactsPath);
-//        loadContacts();
-
-//        //When using this loop, the contacts listed do not include the last contact added
-//        for (int i = 0; i < contactsReader.getFileLines().size(); i++) {
-//            System.out.println(contactsReader.getFileLines().get(i));
-//        }
     }
 
     //Method for deleting a contact
     public void deleteContact() throws IOException {
         List<String> lines = Files.readAllLines(Paths.get("src/contactsManager", "contacts.txt"));
         List<String> newList = new ArrayList<>();
+
+        loadContacts();
+
+        String firstName = this.userInput.getName("Enter a first name");
         String lastName = this.userInput.getName("Enter a last name");
 
         for (String line : lines) {
-            if (line.contains(lastName)) {
+            if (line.trim().toLowerCase().contains(firstName.trim().toLowerCase()) && line.trim().toLowerCase().contains(lastName.trim().toLowerCase())) {
                 newList.remove(lastName);
                 continue;
             }
@@ -121,6 +120,7 @@ public class ContactCRUD extends Input {
         }
 
         Files.write(Paths.get("src/contactsManager", "contacts.txt"), newList);
+        loadContacts();
     }
 
     //Method for exiting the application
