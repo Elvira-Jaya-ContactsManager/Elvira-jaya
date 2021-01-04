@@ -96,6 +96,7 @@ public class ContactCRUD extends Input {
                 Arrays.asList(addAContact.combineProperties()),
                 StandardOpenOption.APPEND
         );
+
     }
 
     //Method for deleting a contact
