@@ -12,7 +12,6 @@ import java.util.*;
 
 public class ContactCRUD extends Input {
     Input userInput = new Input();
-//    FileReader contactsReader = new FileReader("src/contactsManager", "contacts.txt", "contacts.log");
 
     //Constructors
     public ContactCRUD() throws IOException {
@@ -66,7 +65,7 @@ public class ContactCRUD extends Input {
 
         contactsReader.writeToLog("Successfully read the " + contactsReader.getFileName() + " file!");
         System.out.printf("%-15s | %s  \n -----------------------------\n", "Name", "Phone Number");
-        System.out.println( contactsReader.getFileLines().size());
+
         for (int i = 0; i < contactsReader.getFileLines().size(); i++) {
             System.out.println(contactsReader.getFileLines().get(i));
         }
@@ -77,13 +76,17 @@ public class ContactCRUD extends Input {
     public void searchContactByName() throws IOException {
         Path contactsPath = Paths.get("src/contactsManager", "contacts.txt");
         List<String> contactList = Files.readAllLines(contactsPath);
-        String name = this.userInput.getName("Enter a name");
+        String name = this.userInput.getName("Enter a valid contact name");
 
-        for (String contact : contactList) {
-            if (contact.trim().toLowerCase().contains(name.trim().toLowerCase())) {
-                System.out.println(contact);
+            for (String contact : contactList) {
+                if (contact.trim().toLowerCase().contains(name.trim().toLowerCase())) {
+                    System.out.println(contact);
+                    break;
+                } else {
+                    System.out.printf("\"%s\" Contact does not exist%n", name);
+                    break;
+                }
             }
-        }
     }
 
     //Method for adding a contact
@@ -97,8 +100,8 @@ public class ContactCRUD extends Input {
                 Arrays.asList(addAContact.combineProperties()),
                 StandardOpenOption.APPEND
         );
-        loadContacts();
 
+        loadContacts();
     }
 
     //Method for deleting a contact
