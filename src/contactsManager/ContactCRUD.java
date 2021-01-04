@@ -34,52 +34,10 @@ public class ContactCRUD extends Input {
     //Method for updating contact list based on user's choice from the displayMainMenu
     public void updateContactList() throws Exception {
 
-        int selectedUserNumber = displayMainMenu();
-        boolean userContinues = false;
+        int selectedUserNumber;
 
-//        //Conditional to see if user wants to finalize their list
-//        if(selectedUserNumber < 5) {
-//            userContinues = true;
-//        } else {
-//            int newUserChoice = displayMainMenu();
-//
-//            //Conditional to see if user wants to finalize their list
-//            if(newUserChoice == 5 ) {
-//                userContinues = false;
-//            }
-//        }
-
-//        do{
-//            //Conditional to see if user wants to finalize their list
-//            if(selectedUserNumber < 5) {
-//                userContinues = true;
-//            } else {
-//                int newUserChoice = displayMainMenu();
-//
-//                //Conditional to see if user wants to finalize their list
-//                if(newUserChoice == 5 ) {
-//                    userContinues = false;
-//                }
-//            }
-
-//        if(selectedUserNumber == 1) {
-//            loadContacts();
-//            displayMainMenu();
-//        } else if(selectedUserNumber == 2) {
-//            addContact();
-//            displayMainMenu();
-//        } else if(selectedUserNumber == 3) {
-//            searchContactByName();
-//            displayMainMenu();
-//        } else if(selectedUserNumber == 4) {
-//            deleteContact();
-//            displayMainMenu();
-//        } else if(selectedUserNumber == 5) {
-//            exitApplication();
-//        } else {
-//            displayMainMenu();
-//        }
-
+        do {
+            selectedUserNumber = displayMainMenu();
             switch (selectedUserNumber) {
                 case 1:
                     loadContacts();
@@ -87,26 +45,20 @@ public class ContactCRUD extends Input {
                     break;
                 case 2:
                     addContact();
-                    displayMainMenu();
                     break;
                 case 3:
                     searchContactByName();
-                    displayMainMenu();
                     break;
                 case 4:
                     deleteContact();
-                    displayMainMenu();
                     break;
                 case 5:
                     exitApplication();
-//                    userContinues = false;
                     break;
                 default:
                     System.out.println("Thank you for using the Contacts Manager Application!");
             }
-
-//        } while(userContinues);
-
+        } while (selectedUserNumber != 5);
 
     }
 
@@ -121,6 +73,7 @@ public class ContactCRUD extends Input {
             System.out.println(contactsReader.getFileLines().get(i));
         }
         System.out.printf("-------------------------------------------------%n-------------------------------------------------%n");
+        displayMainMenu();
     }
 
 
