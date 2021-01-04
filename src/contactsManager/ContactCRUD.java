@@ -45,15 +45,12 @@ public class ContactCRUD extends Input {
                     break;
                 case 2:
                     addContact();
-                    displayMainMenu();
                     break;
                 case 3:
                     searchContactByName();
-                    displayMainMenu();
                     break;
                 case 4:
                     deleteContact();
-                    displayMainMenu();
                     break;
                 case 5:
                     exitApplication();
@@ -76,6 +73,7 @@ public class ContactCRUD extends Input {
             System.out.println(contactsReader.getFileLines().get(i));
         }
         System.out.printf("-------------------------------------------------%n-------------------------------------------------%n");
+        displayMainMenu();
     }
 
 
