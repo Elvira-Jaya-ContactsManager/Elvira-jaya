@@ -12,7 +12,7 @@ public class FileReader {
     // properties for this class
     //  goal: read in a file and parse through it
     private String directoryName;  // i.e. 'src/contactsManager'
-    private String fileName;       // i.e. 'day18.txt', 'jolts.txt'
+    private String fileName;       // i.e. 'contacts.txt'
     private String logFileName;    // will hold logging info
     private Path directoryPath;    // Path representation of the parent directory for our files
     private Path filePath;   // Path representation for the actual file itself
@@ -39,23 +39,21 @@ public class FileReader {
                 Files.createFile(this.logFilePath);
             } catch (IOException e) {
                 // Store this exception message in the log file
-                // if there is an issue creating the log file, let's just crash the whole party and throw an IOException
                 throw new IOException("Unable to create the logfile (" + this.logFileName + ")!");
             }
         }
 
-        // Directory for data file ('data'), ('src/fileIo')
+        // Directory for data file ('data'), ('src/contactsManager')
         if (Files.notExists(this.directoryPath)) {
             try {
                 Files.createDirectories(this.directoryPath); // createDirectories will create any missing parent directories along with the enclosing directory
             } catch (IOException e) {
                 Files.write(this.logFilePath, Arrays.asList(e.getMessage()), StandardOpenOption.APPEND); // append to the end of the log file
                 throw new IOException("Unable to create the data directory (" + this.directoryName + ")!");
-                // stop all execution
             }
         }
 
-        // Data File ('day18.txt')
+        // Data File ('contacts.txt')
         if (Files.notExists(this.filePath)) { // i.e. 'src/contacts.txt'
             // if we've made into this if statement, that means the file DOES NOT exist, so let's create it!
             try {
@@ -68,7 +66,7 @@ public class FileReader {
 
 
         // Test if the instantiation worked
-        this.fileLines = Files.readAllLines(this.filePath); // gives me every line in (i.e. 'day18.txt' as a String, inside of a List<String>
+        this.fileLines = Files.readAllLines(this.filePath); // gives me every line in (i.e. 'contacts.txt' as a String, inside of a List<String>
         String fileDirectoryPath = "src/contactsManager";
         String contactsFile = "contacts.txt";
 

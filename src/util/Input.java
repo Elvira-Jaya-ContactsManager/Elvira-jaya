@@ -45,7 +45,7 @@ public class Input {
         return input;
     }
 
-    //    prompt for yes/no response from user
+    //prompt for yes/no response from user
     public boolean yesNo() {
         return yesNo("Please enter yes or no[y/n]:");
     }
@@ -63,30 +63,6 @@ public class Input {
                 input.trim().toLowerCase().equals("yes"));
 
     }
-
-
-////     yesNo a method that includes a string as a parameter
-//    public boolean yesNo(String prompt){
-//        String input;
-//        boolean userContinues = true;
-//        boolean no = false;
-//
-//        do {
-////
-////            System.out.println(prompt);
-////            input = this.scanner.next();
-////            if (input.trim().equalsIgnoreCase("y") || input.trim().equalsIgnoreCase("yes")
-////                    || input.trim().equalsIgnoreCase("n") || input.trim().equalsIgnoreCase("no")) {
-////
-////                System.out.println("INVALID ENTRY!");
-////            }else
-////                userContinues=false;
-//        } while (userContinues);
-//
-//
-//        return (input.trim().equalsIgnoreCase("y") ||
-//                input.trim().equalsIgnoreCase("yes"));
-//    }
 
     //get phone number from user
     public String getPhoneNumber() {
