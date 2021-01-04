@@ -15,7 +15,7 @@ public class Contact {
 
     //Method for combining 3 properties for display & format information
     public String combineProperties(){
-        return String.format("%s %-15s  ||  %s ",this.firstName, this.lastName,this.phoneNumber);
+        return String.format("%s %-30s  ||  %s ",this.firstName, this.lastName,this.phoneNumber);
     }
 
     //Getters and Setters
