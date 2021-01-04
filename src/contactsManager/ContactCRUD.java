@@ -36,26 +36,26 @@ public class ContactCRUD extends Input {
 
         int selectedUserNumber = displayMainMenu();
 
-            switch (selectedUserNumber) {
-                case 1:
-                    loadContacts();
-                    break;
-                case 2:
-                    addContact();
-                    displayMainMenu();
-                    break;
-                case 3:
-                    searchContactByName();
-                    break;
-                case 4:
-                    deleteContact();
-                    break;
-                case 5:
-                    exitApplication();
-                    break;
-                default:
-                    System.out.println("Thank you for using the Contacts Manager Application!");
-            }
+        switch (selectedUserNumber) {
+            case 1:
+                loadContacts();
+                break;
+            case 2:
+                addContact();
+                displayMainMenu();
+                break;
+            case 3:
+                searchContactByName();
+                break;
+            case 4:
+                deleteContact();
+                break;
+            case 5:
+                exitApplication();
+                break;
+            default:
+                System.out.println("Thank you for using the Contacts Manager Application!");
+        }
 
     }
 
@@ -76,23 +76,26 @@ public class ContactCRUD extends Input {
     public void searchContactByName() throws IOException {
         Path contactsPath = Paths.get("src/contactsManager", "contacts.txt");
         List<String> contactList = Files.readAllLines(contactsPath);
-        String name = this.userInput.getName("Enter a valid contact name");
 
-            for (String contact : contactList) {
-                if (contact.trim().toLowerCase().contains(name.trim().toLowerCase())) {
-                    System.out.println(contact);
-                    break;
-                } else {
-                    System.out.printf("\"%s\" Contact does not exist%n", name);
-                    break;
-                }
+        String fName = this.userInput.getName("Enter a first name");
+        String lName = this.userInput.getName("Enter a last name");
+
+        for (String contact : contactList) {
+
+            if (contact.trim().toLowerCase().contains(fName.trim().toLowerCase()) && contact.trim().toLowerCase().contains(lName.trim().toLowerCase())) {
+                System.out.println(contact);
+                break;
+            } else {
+                System.out.printf("Contact \"%s %s\" does not exist%n", fName, lName);
             }
+        }
     }
 
     //Method for adding a contact
     public void addContact() throws Exception {
         String firstName = this.userInput.getName("Enter a first name");
         String lastName = this.userInput.getName("Enter a last name");
+
         String userPhoneNumber = this.userInput.getPhoneNumber();
         Contact addAContact = new Contact(firstName, lastName, userPhoneNumber);
         Files.write(
@@ -130,7 +133,7 @@ public class ContactCRUD extends Input {
     public void exitApplication() throws Exception {
         boolean quitProgram = userInput.yesNo("Are you sure you want to quit?[y/n]");
 
-        if(quitProgram) {
+        if (quitProgram) {
             System.out.println("Goodbye!");
         } else {
             updateContactList();
