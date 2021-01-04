@@ -1,7 +1,6 @@
 package contactsManager;
 
 import util.Input;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,7 +15,6 @@ public class ContactCRUD extends Input {
     public ContactCRUD() throws IOException {
     }
 
-
     //Method for displaying the main menu with options for the user to choose from
     public int displayMainMenu() {
         System.out.println("1. View contacts.");
@@ -29,13 +27,12 @@ public class ContactCRUD extends Input {
         return userNumberChoice;
     }
 
-
     //Method for updating contact list based on user's choice from the displayMainMenu
     public void updateContactList() throws Exception {
-
         int selectedUserNumber;
 
         System.out.println("Welcome to Contacts Manager");
+
         do {
             selectedUserNumber = displayMainMenu();
             switch (selectedUserNumber) {
@@ -58,9 +55,7 @@ public class ContactCRUD extends Input {
                     System.out.println("Thank you for using the Contacts Manager Application!");
             }
         } while (selectedUserNumber != 5);
-
     }
-
 
     //Method for loading contacts onto the user interface
     public void loadContacts() throws IOException {
@@ -75,7 +70,6 @@ public class ContactCRUD extends Input {
         }
         System.out.println("-------------------------------------------------\n-------------------------------------------------");
     }
-
 
     //Method for searching a contact by name
     public void searchContactByName() throws IOException {
@@ -95,7 +89,6 @@ public class ContactCRUD extends Input {
         }
     }
 
-
     //Method for adding a contact
     public void addContact() throws Exception {
         String firstName = this.userInput.getName("Enter a first name");
@@ -108,9 +101,9 @@ public class ContactCRUD extends Input {
                 Arrays.asList(addAContact.combineProperties()),
                 StandardOpenOption.APPEND
         );
+
         loadContacts();
     }
-
 
     //Method for deleting a contact
     public void deleteContact() throws IOException {
@@ -133,7 +126,6 @@ public class ContactCRUD extends Input {
         Files.write(Paths.get("src/contactsManager", "contacts.txt"), newList);
         loadContacts();
     }
-
 
     //Method for exiting the application
     public void exitApplication() throws Exception {
