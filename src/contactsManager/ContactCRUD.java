@@ -35,27 +35,78 @@ public class ContactCRUD extends Input {
     public void updateContactList() throws Exception {
 
         int selectedUserNumber = displayMainMenu();
+        boolean userContinues = false;
 
-        switch (selectedUserNumber) {
-            case 1:
-                loadContacts();
-                break;
-            case 2:
-                addContact();
-                displayMainMenu();
-                break;
-            case 3:
-                searchContactByName();
-                break;
-            case 4:
-                deleteContact();
-                break;
-            case 5:
-                exitApplication();
-                break;
-            default:
-                System.out.println("Thank you for using the Contacts Manager Application!");
-        }
+//        //Conditional to see if user wants to finalize their list
+//        if(selectedUserNumber < 5) {
+//            userContinues = true;
+//        } else {
+//            int newUserChoice = displayMainMenu();
+//
+//            //Conditional to see if user wants to finalize their list
+//            if(newUserChoice == 5 ) {
+//                userContinues = false;
+//            }
+//        }
+
+//        do{
+//            //Conditional to see if user wants to finalize their list
+//            if(selectedUserNumber < 5) {
+//                userContinues = true;
+//            } else {
+//                int newUserChoice = displayMainMenu();
+//
+//                //Conditional to see if user wants to finalize their list
+//                if(newUserChoice == 5 ) {
+//                    userContinues = false;
+//                }
+//            }
+
+//        if(selectedUserNumber == 1) {
+//            loadContacts();
+//            displayMainMenu();
+//        } else if(selectedUserNumber == 2) {
+//            addContact();
+//            displayMainMenu();
+//        } else if(selectedUserNumber == 3) {
+//            searchContactByName();
+//            displayMainMenu();
+//        } else if(selectedUserNumber == 4) {
+//            deleteContact();
+//            displayMainMenu();
+//        } else if(selectedUserNumber == 5) {
+//            exitApplication();
+//        } else {
+//            displayMainMenu();
+//        }
+
+            switch (selectedUserNumber) {
+                case 1:
+                    loadContacts();
+                    displayMainMenu();
+                    break;
+                case 2:
+                    addContact();
+                    displayMainMenu();
+                    break;
+                case 3:
+                    searchContactByName();
+                    displayMainMenu();
+                    break;
+                case 4:
+                    deleteContact();
+                    displayMainMenu();
+                    break;
+                case 5:
+                    exitApplication();
+//                    userContinues = false;
+                    break;
+                default:
+                    System.out.println("Thank you for using the Contacts Manager Application!");
+            }
+
+//        } while(userContinues);
+
 
     }
 
@@ -72,6 +123,7 @@ public class ContactCRUD extends Input {
         System.out.printf("-------------------------------------------------%n-------------------------------------------------%n");
     }
 
+
     //Method for searching a contact by name
     public void searchContactByName() throws IOException {
         Path contactsPath = Paths.get("src/contactsManager", "contacts.txt");
@@ -81,15 +133,12 @@ public class ContactCRUD extends Input {
         String lName = this.userInput.getName("Enter a last name");
 
         for (String contact : contactList) {
-
             if (contact.trim().toLowerCase().contains(fName.trim().toLowerCase()) && contact.trim().toLowerCase().contains(lName.trim().toLowerCase())) {
                 System.out.println(contact);
-                break;
-            } else {
-                System.out.printf("Contact \"%s %s\" does not exist%n", fName, lName);
             }
         }
     }
+
 
     //Method for adding a contact
     public void addContact() throws Exception {
