@@ -49,21 +49,40 @@ public class Input {
         return yesNo("Please enter yes or no[y/n]:");
     }
 
-//     yesNo a method that includes a string as a parameter
-    public boolean yesNo(String prompt){
-        String input;
+//  yesNo a method that includes a string as a parameter
+    public boolean yesNo(String prompt) {
+        System.out.println(prompt);
+        String input = this.scanner.next();
 
 
-           System.out.println(prompt);
-          input = this.scanner.next();
-           if (!input.trim().equalsIgnoreCase("y") || !input.trim().equalsIgnoreCase("yes")
-                   || !input.trim().equalsIgnoreCase("n") || !input.trim().equalsIgnoreCase("no")) {
-               System.out.println("INVALID ENTRY");
-           }
 
-        return (input.trim().equalsIgnoreCase("y") ||
-                input.trim().equalsIgnoreCase("yes"));
+        return (input.trim().toLowerCase().equals("y") ||
+                input.trim().toLowerCase().equals("yes"));
     }
+
+
+
+////     yesNo a method that includes a string as a parameter
+//    public boolean yesNo(String prompt){
+//        String input;
+//
+//        System.out.println(prompt);
+//        input = this.scanner.next();
+//
+//        boolean userContinues = true;
+//        boolean no = false;
+//
+//        do {
+//            if (!input.trim().equalsIgnoreCase("y") | !input.trim().equalsIgnoreCase("yes")
+//                   | !input.trim().equalsIgnoreCase("n") | !input.trim().equalsIgnoreCase("no")) {
+//               System.out.println("INVALID ENTRY!");
+//            }
+//        } while (userContinues);
+//
+//
+//        return (input.trim().equalsIgnoreCase("y") ||
+//                input.trim().equalsIgnoreCase("yes"));
+//    }
 
     //get phone number from user
     public String getPhoneNumber(){
