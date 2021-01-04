@@ -2,7 +2,6 @@ package contactsManager;
 
 import util.Input;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,6 +16,7 @@ public class ContactCRUD extends Input {
     public ContactCRUD() throws IOException {
     }
 
+
     //Method for displaying the main menu with options for the user to choose from
     public int displayMainMenu() {
         System.out.println("1. View contacts.");
@@ -28,6 +28,7 @@ public class ContactCRUD extends Input {
         int userNumberChoice = userInput.getInt(1, 5, "Enter an option (1, 2, 3, 4 or 5):");
         return userNumberChoice;
     }
+
 
     //Method for updating contact list based on user's choice from the displayMainMenu
     public void updateContactList() throws Exception {
@@ -59,6 +60,7 @@ public class ContactCRUD extends Input {
         } while (selectedUserNumber != 5);
 
     }
+
 
     //Method for loading contacts onto the user interface
     public void loadContacts() throws IOException {
@@ -109,6 +111,7 @@ public class ContactCRUD extends Input {
         loadContacts();
     }
 
+
     //Method for deleting a contact
     public void deleteContact() throws IOException {
         List<String> lines = Files.readAllLines(Paths.get("src/contactsManager", "contacts.txt"));
@@ -130,6 +133,7 @@ public class ContactCRUD extends Input {
         Files.write(Paths.get("src/contactsManager", "contacts.txt"), newList);
         loadContacts();
     }
+
 
     //Method for exiting the application
     public void exitApplication() throws Exception {

@@ -1,10 +1,2 @@
-Elvira Valadez          ||1234567891
-jaya seyyadri         ||    1234567891
-mrinal katterishetty    ||  1234567890 
-John Cena             ||  12345678901 
-Mickey Mouse            ||  12345678901 
-hello wotld            ||  1234567891 
-alice wonderland       ||  12345678901 
-hi heloo            ||  12345678901 
-Harry Potter           ||  9341234870 
-Ronald Weasley          ||  1234567890 
+Elvira Valadez                         || 1234567890 
+Jaya Seyyadri                        || 1234567891 
