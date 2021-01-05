@@ -62,6 +62,7 @@ public class ContactCRUD extends Input {
         FileReader contactsReader = new FileReader("src/contactsManager", "contacts.txt", "contacts.log");
 
         contactsReader.writeToLog("Successfully read the " + contactsReader.getFileName() + " file!");
+        System.out.println("-------------------------------------------------\n-------------------------------------------------");
         System.out.printf("%-30s || %s  \n-------------------------------------------------\n", "Name", "Phone Number");
         System.out.println("-------------------------------------------------");
 
